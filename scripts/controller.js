@@ -56,9 +56,7 @@ requirejs([
   var statusElem = document.getElementById("gamestatus");
   var inputElem = document.getElementById("inputarea");
   var colorElem = document.getElementById("display");
-  var client = new GameClient({
-    gameId: "simple",
-  });
+  var client = new GameClient();
 
   // Note: CommonUI handles these events for almost all the samples.
   var onConnect = function() {

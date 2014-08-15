@@ -109,9 +109,7 @@ requirejs([
     this.color = cmd.color;
   };
 
-  var server = new GameServer({
-    gameId: "simple",
-  });
+  var server = new GameServer();
   GameSupport.init(server, globals);
 
   var goal = new Goal();
