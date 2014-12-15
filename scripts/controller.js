@@ -58,23 +58,6 @@ requirejs([
   var colorElem = document.getElementById("display");
   var client = new GameClient();
 
-  // Note: CommonUI handles these events for almost all the samples.
-  var onConnect = function() {
-    statusElem.innerHTML = "you've connected to happyFunTimes";
-  };
-
-  var onDisconnect = function() {
-    statusElem.innerHTML = "you were disconnected from happyFunTimes";
-  }
-
-  // If I was going to handle this without CommonUI this is what I'd do
-  //client.addEventListener('connect', onConnect);
-  //client.addEventListener('disconnect', onDisconnect);
-
-  // Because I want the CommonUI to work
-  globals.disconnectFn = onDisconnect;
-  globals.connectFn = onConnect;
-
   CommonUI.setupStandardControllerUI(client, globals);
 
   var randInt = function(range) {
