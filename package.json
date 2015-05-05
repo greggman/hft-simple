@@ -1,15 +1,14 @@
 {
-  "name": "Simple",
+  "dependencies": {},
   "description": "A simple example",
-  "version": "0.0.1",
-  "private": false,
-  "dependencies": {
-  },
   "happyFunTimes": {
-    "gameId": "simple",
+    "apiVersion": "1.9.0",
     "category": "example",
-    "apiVersion": "0.0.0",
+    "gameId": "simple",
     "gameType": "html",
     "minPlayers": 1
-  }
+  },
+  "name": "Simple",
+  "private": false,
+  "version": "0.0.1"
 }
