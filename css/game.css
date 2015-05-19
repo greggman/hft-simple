@@ -34,6 +34,10 @@
 }
 #playfield {
   width: 100%;
-  height 90%;
+  height: 90%;
+  background-color: #fff;
+}
+body {
+    background-color: #888;
 }
 
