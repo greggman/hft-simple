@@ -2,7 +2,7 @@
   "dependencies": {},
   "description": "A simple example",
   "happyFunTimes": {
-    "apiVersion": "1.13.0",
+    "apiVersion": "1.14.0",
     "category": "example",
     "gameId": "simple",
     "gameType": "html",
