@@ -32,19 +32,20 @@
 
 // Start the main app logic.
 requirejs([
-    'hft/commonui',
-    'hft/gameclient',
-    'hft/misc/input',
-    'hft/misc/misc',
-    'hft/misc/mobilehacks',
-    'hft/misc/touch',
+    '../node_modules/happyfuntimes/dist/hft',
+    '../node_modules/hft-sample-ui/dist/sample-ui',
+    '../node_modules/hft-game-utils/dist/game-utils',
   ], function(
-    CommonUI,
-    GameClient,
-    Input,
-    Misc,
-    MobileHacks,
-    Touch) {
+    hft,
+    sampleUI,
+    gameUtils) {
+
+  var GameClient = hft.GameClient;
+  var CommonUI = sampleUI.commonUI;
+  var Input = sampleUI.input;
+  var Misc = sampleUI.misc;
+  var MobileHacks = sampleUI.mobileHacks;
+  var Touch = sampleUI.touch;
 
   var globals = {
     debug: false,
@@ -59,6 +60,8 @@ requirejs([
   var client = new GameClient();
 
   CommonUI.setupStandardControllerUI(client, globals);
+  CommonUI.askForNameOnce();   // ask for the user's name if not set
+  CommonUI.showMenu(true);     // shows the gear menu
 
   var randInt = function(range) {
     return Math.floor(Math.random() * range);

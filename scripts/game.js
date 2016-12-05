@@ -30,15 +30,28 @@
  */
 "use strict";
 
-// Require will call this with GameServer, GameSupport, and Misc once
-// gameserver.js, gamesupport.js, and misc.js have loaded.
+const isDevMode = process.env.NODE_ENV === 'development';
+const requirejs = require('requirejs');
+requirejs.config({
+  nodeRequire: require,
+  baseUrl: __dirname,
+});
 
 // Start the main app logic.
 requirejs([
-    'hft/gameserver',
-    'hft/gamesupport',
-    'hft/misc/misc',
-  ], function(GameServer, GameSupport, Misc) {
+    'happyfuntimes',
+    'hft-game-utils',
+    'hft-sample-ui',
+  ], function(
+    happyfuntimes,
+    gameUtils,
+    sampleUI) {
+
+  var GameServer = happyfuntimes.GameServer;
+  var GameSupport = gameUtils.gameSupport;
+  var Misc = sampleUI.misc;
+  var PlayerNameManager = sampleUI.PlayerNameManager;
+
   var statusElem = document.getElementById("status");
   var canvas = document.getElementById("playfield");
   var ctx = canvas.getContext("2d");
@@ -79,6 +92,9 @@ requirejs([
     netPlayer.addEventListener('disconnect', Player.prototype.disconnect.bind(this));
     netPlayer.addEventListener('move', Player.prototype.movePlayer.bind(this));
     netPlayer.addEventListener('color', Player.prototype.setColor.bind(this));
+
+    this.playerNameManager = new PlayerNameManager(netPlayer);
+    this.playerNameManager.on('setName', Player.prototype.handleNameMsg.bind(this));
   };
 
   // The player disconnected.
@@ -103,6 +119,10 @@ requirejs([
       });
       goal.pickGoal();
     }
+  };
+
+  Player.prototype.handleNameMsg = function(name) {
+    this.name = name;
   };
 
   Player.prototype.setColor = function(cmd) {
