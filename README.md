@@ -10,7 +10,7 @@ It shows using the screen as a touch surface.
 Cloning
 -------
 
-[If you want to clone this follow the instructions here](https://github.com/greggman/HappyFunTimes/blob/master/docs/makinggames.md)
+[If you want to clone this follow the instructions here](http://docs.happyfuntimes.net/docs/makinggames.html)
 
 
 
